@@ -1,5 +1,6 @@
 <?php
-include('controllers/affichage/afficherEscapegame.php');
+require_once(__DIR__ . '/../../config.php');
+require_once(BASE_PATH . '/controllers/affichage/afficherEscapegame.php');
 
 // Récupérer l'ID de la salle depuis l'URL
 $salle_id = isset($_GET['id']) ? $_GET['id'] : null;

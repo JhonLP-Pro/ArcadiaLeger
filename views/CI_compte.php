@@ -1,7 +1,7 @@
 <!-- Inscription et connection-->
 <!--
 <center>
-    <form method="POST" action="controllers/utilisateurController.php">
+    <form method="POST" action="controllers/UtilisateurController.php">
         <h1>Se connecter</h1>
         <label for="email">Email</label>
         <input type="email" name="email" required>
@@ -11,7 +11,7 @@
         <button type="submit" name="connexion">Se connecter</button>
     </form>
 
-    <form action="controllers/utilisateurController.php" method="post">
+    <form action="controllers/UtilisateurController.php" method="post">
         <h1>S'inscrire</h1>
         <label for="nom">Nom :</label>
         <input type="text" name="nom" id="nom" required><br>
@@ -47,7 +47,7 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="card-title text-center mb-4">Se connecter</h2>
-                    <form method="post" action="controllers/utilisateurController.php">
+                    <form method="post" action="controllers/UtilisateurController.php">
                         <div class="mb-3">
                             <label for="login-email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="login-email" name="email" required>
@@ -70,7 +70,7 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="card-title text-center mb-4">S'inscrire</h2>
-                    <form action="controllers/utilisateurController.php" method="post">
+                    <form action="controllers/UtilisateurController.php" method="post">
                         <div class="mb-3">
                             <label for="nom" class="form-label">Nom</label>
                             <input type="text" class="form-control" name="nom" id="nom" required>

@@ -179,7 +179,7 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                                                 <?php endif; ?>
                                             </td>
                                             <td class="text-end pe-4">
-                                                <form action="controllers/reservationsController.php" method="post" class="d-inline">
+                                                <form action="controllers/ReservationsController.php" method="post" class="d-inline">
                                                     <input type="hidden" name="action" value="annuler">
                                                     <input type="hidden" name="id" value="<?= $reservation['id'] ?>">
                                                     <button type="submit" class="btn btn-outline-danger btn-sm px-3" 

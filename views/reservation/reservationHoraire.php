@@ -13,8 +13,8 @@ if (!isset($_GET['id']) || !isset($_GET['salle_id'])) {
     exit();
 }
 
-require_once('bdd/Database.php');
-include('controllers/affichage/afficherEscapegame.php');
+require_once(__DIR__ . '/../../config.php');
+require_once(BASE_PATH . '/controllers/affichage/afficherEscapegame.php');
 
 // Récupération des informations
 $salle = $escapegame->getSalleById($_GET['salle_id']);
@@ -43,7 +43,7 @@ if (!$salle || !$horaire) {
                         <p><strong>Prix:</strong> <?= $salle['prix'] ?>€</p>
                     </div>
 
-                    <form action="controllers/reservationsController.php" method="post">
+                    <form action="controllers/SallesController.php" method="post">
                         <input type="hidden" name="action" value="ajouter">
                         <input type="hidden" name="utilisateur_id" value="<?= $_SESSION['utilisateur']['id'] ?>">
                         <input type="hidden" name="salle_id" value="<?= $salle['id'] ?>">

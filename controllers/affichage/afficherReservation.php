@@ -2,8 +2,9 @@
 
 
 
-include('bdd/Database.php');
-include('models/reservation.php');
+require_once(__DIR__ . '/../../config.php');
+require_once(BASE_PATH . '/bdd/Database.php');
+require_once(BASE_PATH . '/models/reservation.php');
 $reservation = new reservation($bdd);
 
 // Récupération des réservations avec les informations des salles

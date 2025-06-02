@@ -1,5 +1,6 @@
 <?php
-include('controllers/affichage/afficherReservation.php');
+require_once(__DIR__ . '/../config.php');
+require_once(BASE_PATH . '/controllers/affichage/afficherReservation.php');
 ?>
 
 <div class="container py-5">

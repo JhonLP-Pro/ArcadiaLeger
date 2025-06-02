@@ -136,7 +136,7 @@ include('controllers/affichage/afficherUtilisateur.php');
                                         <?php endif; ?>
                                     </td>
                                     <td class="text-center">
-                                        <form method="post" action="controllers/gamemasterController.php" class="d-inline">
+                                        <form method="post" action="controllers/GameMasterController.php" class="d-inline">
                                             <input type="hidden" name="id" value="<?= $user['id'] ?>">
                                             <?php if ($user['type_utilisateur'] == 2): ?>
                                                 <input type="hidden" name="action" value="supprimer">

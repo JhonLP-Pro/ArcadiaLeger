@@ -2,9 +2,9 @@
 
 <?php
 
-include('../bdd/Database.php');
-
-include('../models/escapegame.php');
+require_once(__DIR__ . '/../config.php');
+require_once(BASE_PATH . '/bdd/Database.php');
+require_once(BASE_PATH . '/models/escapegame.php');
 
 if(isset($_POST['action'])) {
 	
@@ -68,11 +68,11 @@ class sallesController
         if(isset($_POST['image'])) {
             $this->salles->ajouterSalle($_POST['nom'], $_POST['theme_id'], $_POST['description'], $_POST['duree'], $_POST['nb_joueurs_min'], $_POST['nb_joueurs_max'], $_POST['prix'], $_POST['image']);
 
-            header('Location: /projetfin/index.php?page=gestionSalles&success=salleAjouter');
+            header('Location: ' . BASE_URL . '/index.php?page=gestionSalles&success=salleAjouter');
         }else{
             $this->salles->ajouterSalle($_POST['nom'], $_POST['theme_id'], $_POST['description'], $_POST['duree'], $_POST['nb_joueurs_min'], $_POST['nb_joueurs_max'], $_POST['prix'], '');
 
-            header('Location: /projetfin/index.php?page=gestionSalles&success=salleAjouter');
+            header('Location: ' . BASE_URL . '/index.php?page=gestionSalles&success=salleAjouter');
         }
     }
 

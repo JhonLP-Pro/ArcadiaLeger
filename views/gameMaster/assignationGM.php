@@ -1,6 +1,7 @@
 <?php
 //afficher reservation des utilisateurs
-include('controllers/affichage/afficherReservation.php');
+require_once(__DIR__ . '/../../config.php');
+require_once(BASE_PATH . '/controllers/affichage/afficherReservation.php');
 
 // Vérifier si l'utilisateur est connecté et est un gamemaster
 if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisateur'] != 2) {
@@ -77,7 +78,7 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                                         </div>
                                     </div>
 
-                                    <form action="controllers/gameMasterController.php" method="post">
+                                    <form action="controllers/GameMasterController.php" method="post">
                                         <input type="hidden" name="action" value="assignationGamemaster">
                                         <input type="hidden" name="reservation_id" value="<?= $reservation['id'] ?>">
                                         <input type="hidden" name="game_master_id" value="<?= $_SESSION['utilisateur']['id'] ?>">

@@ -1,5 +1,6 @@
 <?php
-include('controllers/affichage/afficherEscapegame.php');
+require_once(__DIR__ . '/../../config.php');
+require_once(BASE_PATH . '/controllers/affichage/afficherEscapegame.php');
 
 
 ?>
@@ -8,7 +9,7 @@ include('controllers/affichage/afficherEscapegame.php');
     <h1 class="display-4 text-center mb-5">Réserver une salle</h1>
     
 
-    <form action="controllers/sallesController.php" method="post">
+    <form action="controllers/SallesController.php" method="post">
         <div class="row mb-3">
             <div class="col-md-4">
                 <label for="min_price" class="form-label">Prix minimum</label>

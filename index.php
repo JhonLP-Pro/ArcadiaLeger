@@ -1,9 +1,9 @@
-<?php 
+<?php
 
+session_start();
 
-
-
-include('views/commun/header.php');
+require_once(__DIR__ . '/config.php');
+require_once(BASE_PATH . '/views/commun/header.php');
 
 
 //system de routing

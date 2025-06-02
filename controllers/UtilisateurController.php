@@ -1,8 +1,8 @@
 <?php
 
-include('../bdd/Database.php');
-
-include('../models/Utilisateur.php');
+require_once(__DIR__ . '/../config.php');
+require_once(BASE_PATH . '/bdd/Database.php');
+require_once(BASE_PATH . '/models/Utilisateur.php');
 
 if(isset($_POST['action'])) {
 	
@@ -46,7 +46,7 @@ class UtilisateurController
 
         $this->utilisateur->ajouterUtilisateur($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['mot_de_passe'], $_POST['telephone'], $this->typeUser);
 
-        header('Location: /projetfin/index.php?page=connectioninscription&success=inscription');
+        header('Location: ' . BASE_URL . '/index.php?page=connectioninscription&success=inscription');
 
     }
 
@@ -55,7 +55,7 @@ class UtilisateurController
         /* Mettre a jour le compte utilisateur APRES LA CONNEXION (d'ou le manque de mdp) */ 
         $this->utilisateur->updateUtilisateur($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['telephone'], $this->typeUser, $_POST['id']);
 
-        header('Location:/projetfin/index.php?page=modifierProfil&success=compteModifier');
+        header('Location: ' . BASE_URL . '/index.php?page=modifierProfil&success=compteModifier');
 
     }
 
@@ -71,9 +71,9 @@ class UtilisateurController
         if ($utilisateur){
             session_start();
             $_SESSION['utilisateur'] = $utilisateur;
-            header('Location: /projetfin/index.php?page=accueil');
+            header('Location: ' . BASE_URL . '/index.php?page=accueil');
         }else{
-            header('Location: /projetfin/index.php?page=connectioninscription');
+            header('Location: ' . BASE_URL . '/index.php?page=connectioninscription');
         }
     }
 
@@ -84,7 +84,7 @@ class UtilisateurController
     public function deconnexion()
     {
         session_destroy();
-        header('Location: /projetfin/');
+        header('Location: ' . BASE_URL . '/');
     }
 
 
