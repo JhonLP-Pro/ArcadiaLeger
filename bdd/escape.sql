@@ -117,5 +117,11 @@ INSERT INTO salles (nom, theme_id, description, duree, nb_joueurs_min, nb_joueur
 
 INSERT INTO utilisateurs (nom, prenom, email, mot_de_passe, telephone, type_utilisateur) VALUES
     ('admin', 'admin', 'admin@gmail.com', '$2y$10$L9j3h0xXZjkE3qsF9WPfbefko7e7FQhT2fIg1Z1xiu1d9tISVY0v2', '9999999999', 3);
+    ('gm', 'gm', 'gm@gmail.com', '$2y$10$L9j3h0xXZjkE3qsF9WPfbefko7e7FQhT2fIg1Z1xiu1d9tISVY0v2', '9999999999', 2);
+
+--update
+/*
+update utilisateurs set type_utilisateur = 2 where id = 2;
+*/
 
 COMMIT;
