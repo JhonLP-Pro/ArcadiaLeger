@@ -78,7 +78,7 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                                         </div>
                                     </div>
 
-                                    <form action="controllers/GameMasterController.php" method="post">
+                                    <form action="/controllers/gamemasterController.php" method="post">
                                         <input type="hidden" name="action" value="assignationGamemaster">
                                         <input type="hidden" name="reservation_id" value="<?= $reservation['id'] ?>">
                                         <input type="hidden" name="game_master_id" value="<?= $_SESSION['utilisateur']['id'] ?>">
