@@ -135,18 +135,39 @@ class sallesController
 
     public function ajouterHorairesHebdomadaires()
     {
+        // Débogage - Écrire dans un fichier de log
+        $log_file = BASE_PATH . '/debug_log.txt';
+        file_put_contents($log_file, "=== DÉBUT AJOUT HORAIRES HEBDO ===\n", FILE_APPEND);
+        file_put_contents($log_file, "POST: " . print_r($_POST, true) . "\n", FILE_APPEND);
+        
         if (isset($_POST['salle_id'], $_POST['date_debut'], $_POST['heure_debut'], $_POST['heure_fin'])) {
-            $success = $this->salles->ajouterHorairesHebdomadaires(
-                $_POST['salle_id'],
-                $_POST['date_debut'],
-                $_POST['heure_debut'],
-                $_POST['heure_fin']
-            );
+            file_put_contents($log_file, "Tous les champs requis sont présents\n", FILE_APPEND);
+            file_put_contents($log_file, "salle_id: {$_POST['salle_id']}\n", FILE_APPEND);
+            file_put_contents($log_file, "date_debut: {$_POST['date_debut']}\n", FILE_APPEND);
+            file_put_contents($log_file, "heure_debut: {$_POST['heure_debut']}\n", FILE_APPEND);
+            file_put_contents($log_file, "heure_fin: {$_POST['heure_fin']}\n", FILE_APPEND);
             
+            try {
+                $success = $this->salles->ajouterHorairesHebdomadaires(
+                    $_POST['salle_id'],
+                    $_POST['date_debut'],
+                    $_POST['heure_debut'],
+                    $_POST['heure_fin']
+                );
+                file_put_contents($log_file, "Résultat de l'ajout: " . ($success ? "SUCCÈS" : "ÉCHEC") . "\n", FILE_APPEND);
+            } catch (Exception $e) {
+                file_put_contents($log_file, "ERREUR: " . $e->getMessage() . "\n", FILE_APPEND);
+                $success = false;
+            }
+                
             if ($success) {
+                file_put_contents($log_file, "Redirection vers success\n", FILE_APPEND);
+                file_put_contents($log_file, "=== FIN AJOUT HORAIRES HEBDO ===\n\n", FILE_APPEND);
                 header('Location: ' . BASE_URL . '/index.php?page=gestionSalles&success=horairesHebdomadairesAjoutes');
                 exit();
             } else {
+                file_put_contents($log_file, "Redirection vers error\n", FILE_APPEND);
+                file_put_contents($log_file, "=== FIN AJOUT HORAIRES HEBDO ===\n\n", FILE_APPEND);
                 header('Location: ' . BASE_URL . '/index.php?page=gestionSalles&error=erreurHorairesHebdomadaires');
                 exit();
             }

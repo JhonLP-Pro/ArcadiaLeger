@@ -534,7 +534,7 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
 
                 <!-- Horaires Hebdomadaires -->
                 <div class="tab-pane fade" id="hebdomadaire" role="tabpanel">
-                    <form method="post" action="index.php">
+                    <form method="post" action="debug.php">
                         <input type="hidden" name="controller" value="salles">
                         <input type="hidden" name="action" value="ajouterHorairesHebdomadaires">
                         <div class="row">
