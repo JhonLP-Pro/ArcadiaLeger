@@ -168,8 +168,8 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                                                                 onclick="activateModifyTab(<?= $salle['id'] ?>)">
                                                             <i class="fas fa-edit me-2"></i>Modifier
                                                         </button>
-                                                        <form method="post" action="index.php" class="d-inline ms-2">
-                                                            <input type="hidden" name="action" value="supprimer">
+                                                        <form method="post" action="/controllers/sallesController.php" class="d-inline ms-2">
+                                                             <input type="hidden" name="action" value="supprimer">
                                                             <input type="hidden" name="id" value="<?= $salle['id'] ?>">
                                                             <button type="submit" class="btn btn-outline-danger btn-sm" 
                                                                     onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette salle ?')">
