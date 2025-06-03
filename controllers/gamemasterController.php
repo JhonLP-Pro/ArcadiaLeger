@@ -44,21 +44,21 @@ class gameMasterController
     {
         $this->gamemaster->giveMaster($_POST['id']);
 
-        header('Location: /projetfin/index.php?page=gestionGamemasters&success=GameMasterAjouter');
+        header('Location: index.php?page=gestionGamemasters&success=GameMasterAjouter');
     }
 
     public function deletegameMaster()
     {
         $this->gamemaster->deleteMaster($_POST['id']);
 
-        header('Location: /projetfin/index.php?page=gestionGamemasters&success=GameMasterSupprimer');    
+        header('Location: index.php?page=gestionGamemasters&success=GameMasterSupprimer');    
     }
 
     public function assignationGamemaster()
     {
         $this->gamemaster->assignationMaster($_POST['reservation_id'], $_POST['game_master_id']);
 
-        header('Location: /projetfin/index.php?page=assignationGM&success=GameMasterAssigner');
+        header('Location: index.php?page=assignationGM&success=GameMasterAssigner');
     }
 
 

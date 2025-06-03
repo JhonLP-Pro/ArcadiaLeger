@@ -41,7 +41,7 @@ class reservationsController
     {
         $this->reservations->creerReservation($_POST['utilisateur_id'], $_POST['salle_id'], $_POST['horaire_id'], $_POST['nb_participants'], $_POST['prix_total']);
         
-        header('Location: /projetfin/index.php?page=gestionReservations&success=ReservationAjouter');
+        header('Location: index.php?page=gestionReservations&success=ReservationAjouter');
     }
 
 
@@ -49,7 +49,7 @@ class reservationsController
     {
         $this->reservations->annulerReservation($_POST['id']);
 
-        header('Location: /projetfin/index.php?page=gestionReservations&success=ReservationAnnuler');
+        header('Location: index.php?page=gestionReservations&success=ReservationAnnuler');
     }
 
     public function afficherSallesbyprix()
