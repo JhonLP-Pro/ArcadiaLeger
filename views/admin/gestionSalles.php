@@ -168,7 +168,7 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                                                                 onclick="activateModifyTab(<?= $salle['id'] ?>)">
                                                             <i class="fas fa-edit me-2"></i>Modifier
                                                         </button>
-                                                        <form method="post" action="controllers/SallesController.php" class="d-inline ms-2">
+                                                        <form method="post" action="index.php" class="d-inline ms-2">
                                                             <input type="hidden" name="action" value="supprimer">
                                                             <input type="hidden" name="id" value="<?= $salle['id'] ?>">
                                                             <button type="submit" class="btn btn-outline-danger btn-sm" 
@@ -196,7 +196,9 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                                     <i class="fas fa-plus-circle text-primary me-2"></i>Ajouter une nouvelle salle
                                 </h5>
                             </div>
-                            <form method="post" action="controllers/sallesController.php" enctype="multipart/form-data" class="row g-4">
+                            <form method="post" action="index.php" enctype="multipart/form-data" class="row g-4">
+                                <input type="hidden" name="controller" value="salles">
+                                <input type="hidden" name="action" value="ajouter">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="mb-3">
@@ -278,7 +280,6 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                                     </div>
                                 </div>
                                 <div class="text-end mt-4">
-                                    <input type="hidden" name="action" value="ajouter">
                                     <button type="submit" class="btn btn-primary btn-lg px-5">
                                         <i class="fas fa-plus-circle me-2"></i>Créer la salle
                                     </button>
@@ -296,7 +297,9 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                                         <i class="fas fa-edit text-primary me-2"></i>Modifier une salle existante
                                     </h5>
                                 </div>
-                                <form method="post" action="controllers/SallesController.php" enctype="multipart/form-data" class="row g-4">
+                                <form method="post" action="index.php" enctype="multipart/form-data" class="row g-4">
+                                    <input type="hidden" name="controller" value="salles">
+                                    <input type="hidden" name="action" value="update">
                                     <div class="col-12 mb-4">
                                         <label for="salle_id" class="form-label fw-bold mb-2">
                                             <i class="fas fa-door-closed text-primary me-2"></i>Sélectionner la salle à modifier
@@ -384,7 +387,6 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                                         </div>
                                     </div>
                                 </div>
-                                <input type="hidden" name="action" value="update">
                                 <button type="submit" class="btn btn-primary">Modifier la salle</button>
                             </form>
                         </div>
@@ -418,7 +420,9 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
             <div class="tab-content" id="horairesTabsContent">
                 <!-- Horaire Ponctuel -->
                 <div class="tab-pane fade show active" id="ponctuel" role="tabpanel">
-                    <form method="post" action="controllers/SallesController.php">
+                    <form method="post" action="index.php">
+                        <input type="hidden" name="controller" value="salles">
+                        <input type="hidden" name="action" value="ajouterHoraire">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
@@ -454,14 +458,15 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                             </div>
                         </div>
 
-                        <input type="hidden" name="action" value="ajouterHoraire">
                         <button type="submit" class="btn btn-primary">Ajouter l'horaire</button>
                     </form>
                 </div>
 
                 <!-- Horaire Récurrent -->
                 <div class="tab-pane fade" id="recurrent" role="tabpanel">
-                    <form method="post" action="controllers/SallesController.php">
+                    <form method="post" action="index.php">
+                        <input type="hidden" name="controller" value="salles">
+                        <input type="hidden" name="action" value="ajouterHoraireRecurent">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
@@ -523,14 +528,15 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                             Cet horaire sera créé pour les 4 prochains mois, le même jour de chaque mois.
                         </div>
 
-                        <input type="hidden" name="action" value="ajouterHoraireRecurent">
                         <button type="submit" class="btn btn-primary">Ajouter l'horaire récurrent</button>
                     </form>
                 </div>
 
                 <!-- Horaires Hebdomadaires -->
                 <div class="tab-pane fade" id="hebdomadaire" role="tabpanel">
-                    <form method="post" action="controllers/SallesController.php">
+                    <form method="post" action="index.php">
+                        <input type="hidden" name="controller" value="salles">
+                        <input type="hidden" name="action" value="ajouterHorairesHebdomadaires">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
@@ -571,7 +577,6 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                             Des horaires seront créés automatiquement pour les 7 jours suivant la date de début, à la même heure chaque jour.
                         </div>
 
-                        <input type="hidden" name="action" value="ajouterHorairesHebdomadaires">
                         <button type="submit" class="btn btn-primary">Ajouter les horaires hebdomadaires</button>
                     </form>
                 </div>

@@ -3,6 +3,36 @@
 session_start();
 
 require_once(__DIR__ . '/config.php');
+
+// Handle POST requests for controllers
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
+    $controllerName = '';
+    
+    // Déterminer le contrôleur à partir de l'action ou d'un paramètre explicite
+    if (isset($_POST['controller'])) {
+        $controllerName = ucfirst(strtolower($_POST['controller'])) . 'Controller';
+    } else {
+        // Par défaut, utiliser SallesController pour les actions liées aux salles
+        if (in_array($_POST['action'], ['ajouter', 'update', 'supprimer', 'ajouterHoraire', 'ajouterHoraireRecurent', 'ajouterHorairesHebdomadaires', 'supprimerHoraire', 'getsallebyprixrange', 'getsallebyplayerrange'])) {
+            $controllerName = 'SallesController';
+        }
+        // Ajouter d'autres contrôleurs au besoin
+    }
+    
+    if (!empty($controllerName)) {
+        $controllerFile = BASE_PATH . '/controllers/' . $controllerName . '.php';
+        
+        if (file_exists($controllerFile)) {
+            require_once(BASE_PATH . '/bdd/Database.php'); // Ensure $bdd is available
+            require_once($controllerFile);
+            exit(); // Stop further script execution after controller has handled the action
+        } else {
+            // Optionally, handle controller not found error
+            error_log('Controller not found: ' . $controllerFile);
+        }
+    }
+}
+
 require_once(BASE_PATH . '/views/commun/header.php');
 
 

@@ -68,11 +68,13 @@ class sallesController
         if(isset($_POST['image'])) {
             $this->salles->ajouterSalle($_POST['nom'], $_POST['theme_id'], $_POST['description'], $_POST['duree'], $_POST['nb_joueurs_min'], $_POST['nb_joueurs_max'], $_POST['prix'], $_POST['image']);
 
-            header('Location: /index.php?page=gestionSalles&success=salleAjouter');
+            header('Location: ' . BASE_URL . '/index.php?page=gestionSalles&success=salleAjouter');
+            exit();
         }else{
             $this->salles->ajouterSalle($_POST['nom'], $_POST['theme_id'], $_POST['description'], $_POST['duree'], $_POST['nb_joueurs_min'], $_POST['nb_joueurs_max'], $_POST['prix'], '');
 
-            header('Location: /index.php?page=gestionSalles&success=salleAjouter');
+            header('Location: ' . BASE_URL . '/index.php?page=gestionSalles&success=salleAjouter');
+            exit();
         }
     }
 
@@ -81,11 +83,13 @@ class sallesController
         if(isset($_POST['image'])) {
             $this->salles->updateSalle($_POST['id'], $_POST['nom'], $_POST['theme_id'], $_POST['description'], $_POST['duree'], $_POST['nb_joueurs_min'], $_POST['nb_joueurs_max'], $_POST['prix'], $_POST['image']);
 
-            header('Location: /index.php?page=gestionSalles&success=salleModifier');
+            header('Location: ' . BASE_URL . '/index.php?page=gestionSalles&success=salleModifier');
+            exit();
         }else{
             $this->salles->updateSalle($_POST['id'], $_POST['nom'], $_POST['theme_id'], $_POST['description'], $_POST['duree'], $_POST['nb_joueurs_min'], $_POST['nb_joueurs_max'], $_POST['prix'], '');
 
-            header('Location: /index.php?page=gestionSalles&success=salleModifier');
+            header('Location: ' . BASE_URL . '/index.php?page=gestionSalles&success=salleModifier');
+            exit();
         }
     }
 
@@ -93,7 +97,8 @@ class sallesController
     {
         $this->salles->supprimerSalle($_POST['id']);
 
-        header('Location: /index.php?page=gestionSalles&success=salleSupprimer');
+        header('Location: ' . BASE_URL . '/index.php?page=gestionSalles&success=salleSupprimer');
+        exit();
     }
 
     public function ajouterHoraire()
@@ -105,7 +110,8 @@ class sallesController
 
         $this->salles->ajouterHoraire($_POST['salle_id'], $heure_debut, $heure_fin);
 
-        header('Location: /index.php?page=gestionSalles&success=horaireAjouter');
+        header('Location: ' . BASE_URL . '/index.php?page=gestionSalles&success=horaireAjouter');
+        exit();
     }
 
     public function ajouterHoraireRecurent()
@@ -118,9 +124,11 @@ class sallesController
                 $_POST['jour'],
                 $_POST['mois']
             );
-            header('Location: /index.php?page=gestionSalles&success=horaireRecurentAjouter');
+            header('Location: ' . BASE_URL . '/index.php?page=gestionSalles&success=horaireRecurentAjouter');
+            exit();
         } else {
-            header('Location: /index.php?page=gestionSalles&error=formulaireIncomplet');
+            header('Location: ' . BASE_URL . '/index.php?page=gestionSalles&error=formulaireIncomplet');
+            exit();
         }
         exit();
     }
@@ -136,12 +144,15 @@ class sallesController
             );
             
             if ($success) {
-                header('Location: /index.php?page=gestionSalles&success=horairesHebdomadairesAjoutes');
+                header('Location: ' . BASE_URL . '/index.php?page=gestionSalles&success=horairesHebdomadairesAjoutes');
+                exit();
             } else {
-                header('Location: /index.php?page=gestionSalles&error=erreurHorairesHebdomadaires');
+                header('Location: ' . BASE_URL . '/index.php?page=gestionSalles&error=erreurHorairesHebdomadaires');
+                exit();
             }
         } else {
-            header('Location: /index.php?page=gestionSalles&error=formulaireIncomplet');
+            header('Location: ' . BASE_URL . '/index.php?page=gestionSalles&error=formulaireIncomplet');
+            exit();
         }
         exit();
     }
@@ -150,19 +161,22 @@ class sallesController
     {
         $this->salles->supprimerHoraire($_POST['id']);
 
-        header('Location: /index.php?page=gestionSalles&success=horaireSupprimer');
+        header('Location: ' . BASE_URL . '/index.php?page=gestionSalles&success=horaireSupprimer');
+        exit();
     }
 
     
 
     public function getsallebyprixrange()
     {
-        header('Location: /index.php?page=reservation&min_price=' . $_POST['min_price'] . '&max_price=' . $_POST['max_price']);
+        header('Location: ' . BASE_URL . '/index.php?page=reservation&min_price=' . $_POST['min_price'] . '&max_price=' . $_POST['max_price']);
+        exit();
     }
 
     public function getsallebyplayerrange()
     {
-        header('Location: /index.php?page=reservation&min_players=' . $_POST['min_players'] . '&max_players=' . $_POST['max_players']);
+        header('Location: ' . BASE_URL . '/index.php?page=reservation&min_players=' . $_POST['min_players'] . '&max_players=' . $_POST['max_players']);
+        exit();
     }
 
     

@@ -1,7 +1,7 @@
 <?php
 	try{
-		$user = "root";
-		$pass = "";
+		$user = "webuser";
+		$pass = "motdepassefort";
         $nomBdd = "escapegame";
 		$bdd = new PDO('mysql:host=localhost;dbname='.$nomBdd, $user, $pass);
 		
