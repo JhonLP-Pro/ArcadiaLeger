@@ -13,52 +13,47 @@ session_start();
 require_once(__DIR__ . '/config.php');
 require_once(BASE_PATH . '/bdd/Database.php');
 
-// Créer un fichier de log
-$log_file = BASE_PATH . '/debug_log.txt';
-file_put_contents($log_file, "=== DÉBOGAGE (" . date('Y-m-d H:i:s') . ") ===\n", FILE_APPEND);
+// Utiliser la sortie standard au lieu d'un fichier de log
+echo "<h1>Débogage</h1>";
+echo "<pre>";
+echo "=== DÉBOGAGE (" . date('Y-m-d H:i:s') . ") ===\n";
+
 
 // Vérifier la connexion à la base de données
 try {
     $test_query = $bdd->query("SELECT 1");
-    file_put_contents($log_file, "Connexion à la base de données : SUCCÈS\n", FILE_APPEND);
+    echo "Connexion à la base de données : SUCCÈS\n";
 } catch (PDOException $e) {
-    file_put_contents($log_file, "Erreur de connexion à la base de données : " . $e->getMessage() . "\n", FILE_APPEND);
+    echo "Erreur de connexion à la base de données : " . $e->getMessage() . "\n";
 }
 
 // Afficher les informations de la requête
-file_put_contents($log_file, "Méthode : " . $_SERVER['REQUEST_METHOD'] . "\n", FILE_APPEND);
+echo "Méthode : " . $_SERVER['REQUEST_METHOD'] . "\n";
 
 // Afficher les données POST
 if (!empty($_POST)) {
-    file_put_contents($log_file, "Données POST : " . print_r($_POST, true) . "\n", FILE_APPEND);
+    echo "Données POST : " . print_r($_POST, true) . "\n";
 } else {
-    file_put_contents($log_file, "Aucune donnée POST\n", FILE_APPEND);
+    echo "Aucune donnée POST\n";
 }
 
 // Afficher les données GET
 if (!empty($_GET)) {
-    file_put_contents($log_file, "Données GET : " . print_r($_GET, true) . "\n", FILE_APPEND);
+    echo "Données GET : " . print_r($_GET, true) . "\n";
 } else {
-    file_put_contents($log_file, "Aucune donnée GET\n", FILE_APPEND);
+    echo "Aucune donnée GET\n";
 }
 
 // Afficher les informations de session
 if (!empty($_SESSION)) {
-    file_put_contents($log_file, "Données SESSION : " . print_r($_SESSION, true) . "\n", FILE_APPEND);
+    echo "Données SESSION : " . print_r($_SESSION, true) . "\n";
 } else {
-    file_put_contents($log_file, "Aucune donnée SESSION\n", FILE_APPEND);
+    echo "Aucune donnée SESSION\n";
 }
 
-file_put_contents($log_file, "=== FIN DÉBOGAGE ===\n\n", FILE_APPEND);
-
-// Afficher un message à l'écran
-echo "<h1>Débogage</h1>";
-echo "<p>Les informations de débogage ont été enregistrées dans le fichier debug_log.txt</p>";
-echo "<p>Vérifiez ce fichier pour voir les détails.</p>";
-
-// Afficher le contenu du fichier de log
-echo "<h2>Contenu du fichier de log :</h2>";
-echo "<pre>";
-echo file_get_contents($log_file);
+echo "=== FIN DÉBOGAGE ===\n\n";
 echo "</pre>";
+
+// Ajouter un bouton pour retourner à la page de gestion des salles
+echo "<p><a href='index.php?page=gestionSalles' class='btn btn-primary'>Retour à la gestion des salles</a></p>";
 ?>
