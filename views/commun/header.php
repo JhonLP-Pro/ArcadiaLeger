@@ -37,7 +37,7 @@ session_start();
       <ul class="navbar-nav me-auto">
         <?php if (!isset($_SESSION['utilisateur']) || ($_SESSION['utilisateur']['type_utilisateur'] != 3 && $_SESSION['utilisateur']['type_utilisateur'] != 2)) : ?>
         <li class="nav-item">
-          <a class="nav-link <?php echo !isset($_GET['page']) || $_GET['page'] === 'accueil' ? 'active' : ''; ?>" href="/projetfin/"><i class="fas fa-home me-1"></i>Accueil</a>
+          <a class="nav-link <?php echo !isset($_GET['page']) || $_GET['page'] === 'accueil' ? 'active' : ''; ?>" href="/"><i class="fas fa-home me-1"></i>Accueil</a>
         </li>
         <li class="nav-item">
           <a class="nav-link <?php echo isset($_GET['page']) && $_GET['page'] === 'reservation' ? 'active' : ''; ?>" href="index.php?page=reservation"><i class="fas fa-book me-1"></i>Réservation</a>
