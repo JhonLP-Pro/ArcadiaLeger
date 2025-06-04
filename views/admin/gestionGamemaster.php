@@ -1,4 +1,11 @@
 <?php
+// Vérification que l'utilisateur est connecté et est un administrateur
+if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisateur'] != 3) {
+    // Redirection vers la page d'accueil si l'utilisateur n'est pas un administrateur
+    header('Location: index.php');
+    exit;
+}
+
 include('controllers/affichage/afficherUtilisateur.php');
 ?>
 
