@@ -166,10 +166,10 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                                                 </td>
                                                 <td class="text-end pe-4">
                                                     <div class="btn-group">
-                                                        <button type="button" class="btn btn-outline-primary btn-sm" 
+                                                        <!--<button type="button" class="btn btn-outline-primary btn-sm" 
                                                                 onclick="activateModifyTab(<?= $salle['id'] ?>)">
                                                             <i class="fas fa-edit me-2"></i>Modifier
-                                                        </button>
+                                                        </button>-->
                                                         <form method="post" action="/controllers/sallesController.php" class="d-inline ms-2">
                                                              <input type="hidden" name="action" value="supprimer">
                                                             <input type="hidden" name="id" value="<?= $salle['id'] ?>">
