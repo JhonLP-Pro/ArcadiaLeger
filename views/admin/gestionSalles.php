@@ -206,14 +206,14 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                                             <label for="nom" class="form-label fw-bold mb-2">
                                                 <i class="fas fa-signature text-primary me-2"></i>Nom de la salle
                                             </label>
-                                            <input type="text" class="form-control form-control-lg border" 
+                                            <input type="text" class="form-control form-control-lg bg-light border-0 text-dark" 
                                                    id="nom" name="nom" required placeholder="Ex: La Crypte Mystérieuse">
                                         </div>
                                         <div class="mb-3">
                                             <label for="description" class="form-label fw-bold mb-2">
                                                 <i class="fas fa-align-left text-primary me-2"></i>Description
                                             </label>
-                                            <textarea class="form-control border" id="description" 
+                                            <textarea class="form-control bg-light border-0 text-dark" id="description" 
                                                       name="description" rows="4" required 
                                                       placeholder="Décrivez l'ambiance et l'histoire de la salle..."></textarea>
                                         </div>
@@ -221,14 +221,14 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                                             <label for="image" class="form-label fw-bold mb-2">
                                                 <i class="fas fa-image text-primary me-2"></i>Image de la salle
                                             </label>
-                                            <input type="file" class="form-control border" 
+                                            <input type="file" class="form-control bg-light border-0 text-dark" 
                                                    id="image" name="image" accept="image/*">
                                         </div>
                                         <div class="mb-3">
                                             <label for="theme" class="form-label fw-bold mb-2">
                                                 <i class="fas fa-theater-masks text-primary me-2"></i>Thème
                                             </label>
-                                            <select class="form-select border" id="theme" name="theme_id" required>
+                                            <select class="form-select bg-light border-0 text-dark" id="theme" name="theme_id" required>
                                                 <option value="">Sélectionnez un thème</option>
                                                 <?php foreach ($allThemes as $theme): ?>
                                                     <option value="<?= $theme['id'] ?>"><?= htmlspecialchars($theme['nom']) ?></option>
@@ -242,9 +242,9 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                                                 <i class="fas fa-clock text-primary me-2"></i>Durée de la partie
                                             </label>
                                             <div class="input-group">
-                                                <input type="number" class="form-control border" 
+                                                <input type="number" class="form-control bg-light border-0 text-dark" 
                                                        id="duree" name="duree" required placeholder="60">
-                                                <span class="input-group-text border">minutes</span>
+                                                <span class="input-group-text bg-light border-0 text-dark">minutes</span>
                                             </div>
                                         </div>
                                         <div class="mb-3">
@@ -254,15 +254,15 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="input-group">
-                                                        <span class="input-group-text border">Min</span>
-                                                        <input type="number" class="form-control border" 
+                                                        <span class="input-group-text bg-light border-0 text-dark">Min</span>
+                                                        <input type="number" class="form-control bg-light border-0 text-dark" 
                                                                id="nb_joueurs_min" name="nb_joueurs_min" required placeholder="2">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="input-group">
-                                                        <span class="input-group-text border">Max</span>
-                                                        <input type="number" class="form-control border" 
+                                                        <span class="input-group-text bg-light border-0 text-dark">Max</span>
+                                                        <input type="number" class="form-control bg-light border-0 text-dark" 
                                                                id="nb_joueurs_max" name="nb_joueurs_max" required placeholder="6">
                                                     </div>
                                                 </div>
@@ -273,9 +273,9 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                                                 <i class="fas fa-euro-sign text-primary me-2"></i>Prix de la partie
                                             </label>
                                             <div class="input-group">
-                                                <input type="number" class="form-control border" 
+                                                <input type="number" class="form-control bg-light border-0 text-dark" 
                                                        id="prix" name="prix" required placeholder="120">
-                                                <span class="input-group-text border">€</span>
+                                                <span class="input-group-text bg-light border-0 text-dark">€</span>
                                             </div>
                                         </div>
                                     </div>
@@ -305,7 +305,7 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                                             <label for="salle_id" class="form-label fw-bold mb-2">
                                                 <i class="fas fa-door-closed text-primary me-2"></i>Sélectionner la salle à modifier
                                             </label>
-                                            <select class="form-select form-select-lg border" id="salle_id" name="id" required>
+                                            <select class="form-select form-select-lg bg-light border-0 text-dark" id="salle_id" name="id" required>
                                                 <option value="">Sélectionner une salle</option>
                                                 <?php foreach ($allsalles as $salle): ?>
                                                     <option value="<?= $salle['id'] ?>"><?= htmlspecialchars($salle['nom']) ?></option>
@@ -319,14 +319,14 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                                                 <label for="nom" class="form-label fw-bold mb-2">
                                                     <i class="fas fa-signature text-primary me-2"></i>Nom de la salle
                                                 </label>
-                                                <input type="text" class="form-control form-control-lg border" 
+                                                <input type="text" class="form-control form-control-lg bg-light border-0 text-dark" 
                                                        id="nom" name="nom" required placeholder="Ex: La Crypte Mystérieuse">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="description" class="form-label fw-bold mb-2">
                                                     <i class="fas fa-align-left text-primary me-2"></i>Description
                                                 </label>
-                                                <textarea class="form-control border" id="description" 
+                                                <textarea class="form-control bg-light border-0 text-dark" id="description" 
                                                       name="description" rows="4" required 
                                                       placeholder="Décrivez l'ambiance et l'histoire de la salle..."></textarea>
                                             </div>
@@ -334,14 +334,14 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                                                 <label for="image" class="form-label fw-bold mb-2">
                                                     <i class="fas fa-image text-primary me-2"></i>Image de la salle
                                                 </label>
-                                                <input type="file" class="form-control border" 
+                                                <input type="file" class="form-control bg-light border-0 text-dark" 
                                                        id="image" name="image" accept="image/*">
                                             </div>
                                             <div class="mb-3">
                                                 <label for="theme_edit" class="form-label fw-bold mb-2">
                                                     <i class="fas fa-theater-masks text-primary me-2"></i>Thème
                                                 </label>
-                                                <select class="form-select border" id="theme_edit" name="theme_id" required>
+                                                <select class="form-select bg-light border-0 text-dark" id="theme_edit" name="theme_id" required>
                                                     <option value="">Sélectionnez un thème</option>
                                                     <?php foreach ($allThemes as $theme): ?>
                                                         <option value="<?= $theme['id'] ?>">
@@ -357,9 +357,9 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                                                     <i class="fas fa-clock text-primary me-2"></i>Durée de la partie
                                                 </label>
                                                 <div class="input-group">
-                                                    <input type="number" class="form-control border" 
+                                                    <input type="number" class="form-control bg-light border-0 text-dark" 
                                                            id="duree" name="duree" required placeholder="60">
-                                                    <span class="input-group-text border">minutes</span>
+                                                    <span class="input-group-text bg-light border-0 text-dark">minutes</span>
                                                 </div>
                                             </div>
                                             <div class="mb-3">
@@ -369,15 +369,15 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="input-group">
-                                                            <span class="input-group-text border">Min</span>
-                                                            <input type="number" class="form-control border" 
+                                                            <span class="input-group-text bg-light border-0 text-dark">Min</span>
+                                                            <input type="number" class="form-control bg-light border-0 text-dark" 
                                                                    id="nb_joueurs_min" name="nb_joueurs_min" required placeholder="2">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="input-group">
-                                                            <span class="input-group-text border">Max</span>
-                                                            <input type="number" class="form-control border" 
+                                                            <span class="input-group-text bg-light border-0 text-dark">Max</span>
+                                                            <input type="number" class="form-control bg-light border-0 text-dark" 
                                                                    id="nb_joueurs_max" name="nb_joueurs_max" required placeholder="6">
                                                         </div>
                                                     </div>
@@ -388,9 +388,9 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                                                     <i class="fas fa-euro-sign text-primary me-2"></i>Prix de la partie
                                                 </label>
                                                 <div class="input-group">
-                                                    <input type="number" class="form-control border" 
+                                                    <input type="number" class="form-control bg-light border-0 text-dark" 
                                                            id="prix" name="prix" required placeholder="120">
-                                                    <span class="input-group-text border">€</span>
+                                                    <span class="input-group-text bg-light border-0 text-dark">€</span>
                                                 </div>
                                             </div>
                                         </div>
