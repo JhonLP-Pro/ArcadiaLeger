@@ -610,34 +610,45 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Fonction pour activer l'onglet de modification
     window.activateModifyTab = function(salleId) {
-        var modifierTab = document.getElementById('modifier-salle-tab');
-        var bsTab = new bootstrap.Tab(modifierTab);
-        bsTab.show();
+        // Trouver l'élément de l'onglet modification directement
+        var modifierTab = document.querySelector('#modifier-salle-tab');
         
-        // Pré-remplir l'ID de la salle
-        var select = document.getElementById('salle_id');
-        if (select) {
-            select.value = salleId;
+        // Activer l'onglet manuellement en cliquant dessus
+        if (modifierTab) {
+            modifierTab.click();
+            console.log("Onglet cliqué");
             
-            // Récupérer les données de la salle sélectionnée
-            <?php
-            echo "var salles = {";
-            foreach ($allsalles as $s) {
-                echo $s['id'] . ': {"nom": "' . addslashes($s['nom']) . '", "description": "' . addslashes($s['description']) . '", "duree": ' . $s['duree'] . ', "nb_joueurs_min": ' . $s['nb_joueurs_min'] . ', "nb_joueurs_max": ' . $s['nb_joueurs_max'] . ', "prix": ' . $s['prix'] . ', "theme_id": ' . $s['theme_id'] . '},'; 
+            // Pré-remplir l'ID de la salle
+            var select = document.getElementById('salle_id');
+            if (select) {
+                console.log("Select trouvé, définition de la valeur: " + salleId);
+                select.value = salleId;
+                
+                // Récupérer les données de la salle sélectionnée
+                <?php
+                echo "var salles = {";
+                foreach ($allsalles as $s) {
+                    echo $s['id'] . ': {"nom": "' . addslashes($s['nom']) . '", "description": "' . addslashes($s['description']) . '", "duree": ' . $s['duree'] . ', "nb_joueurs_min": ' . $s['nb_joueurs_min'] . ', "nb_joueurs_max": ' . $s['nb_joueurs_max'] . ', "prix": ' . $s['prix'] . ', "theme_id": ' . $s['theme_id'] . '},'; 
+                }
+                echo "};";
+                ?>
+                
+                // Pré-remplir les champs du formulaire avec les données de la salle
+                if (salles[salleId]) {
+                    console.log("Pré-remplissage des champs avec les données de la salle: " + salleId);
+                    document.getElementById('nom').value = salles[salleId].nom;
+                    document.getElementById('description').value = salles[salleId].description;
+                    document.getElementById('duree').value = salles[salleId].duree;
+                    document.getElementById('nb_joueurs_min').value = salles[salleId].nb_joueurs_min;
+                    document.getElementById('nb_joueurs_max').value = salles[salleId].nb_joueurs_max;
+                    document.getElementById('prix').value = salles[salleId].prix;
+                    document.getElementById('theme_edit').value = salles[salleId].theme_id;
+                }
+            } else {
+                console.error("Élément select 'salle_id' non trouvé");
             }
-            echo "};";
-            ?>
-            
-            // Pré-remplir les champs du formulaire avec les données de la salle
-            if (salles[salleId]) {
-                document.getElementById('nom').value = salles[salleId].nom;
-                document.getElementById('description').value = salles[salleId].description;
-                document.getElementById('duree').value = salles[salleId].duree;
-                document.getElementById('nb_joueurs_min').value = salles[salleId].nb_joueurs_min;
-                document.getElementById('nb_joueurs_max').value = salles[salleId].nb_joueurs_max;
-                document.getElementById('prix').value = salles[salleId].prix;
-                document.getElementById('theme_edit').value = salles[salleId].theme_id;
-            }
+        } else {
+            console.error("Élément onglet 'modifier-salle-tab' non trouvé");
         }
     }
 });
