@@ -78,7 +78,7 @@ switch ($page) {
 		break;
 
 	case 'mesreservations':
-		include('views/mesreservations.php');
+		include('views/mesReservations.php');
 		break;	
 	//Compte admin
 
