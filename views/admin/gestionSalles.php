@@ -384,8 +384,11 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                                             <input type="number" class="form-control" id="prix" name="prix" required>
                                         </div>
                                     </div>
+                                <div class="text-end mt-4">
+                                    <button type="submit" class="btn btn-primary btn-lg px-5">
+                                        <i class="fas fa-save me-2"></i>Enregistrer les modifications
+                                    </button>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Modifier la salle</button>
                             </form>
                         </div>
                     </div>
