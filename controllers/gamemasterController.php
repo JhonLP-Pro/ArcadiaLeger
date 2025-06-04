@@ -44,14 +44,14 @@ class gameMasterController
     {
         $this->gamemaster->giveMaster($_POST['id']);
 
-        header('Location: /index.php?page=gestionGamemasters&success=GameMasterAjouter');
+        header('Location: /index.php?page=gestionGamemaster&success=GameMasterAjouter');
     }
 
     public function deletegameMaster()
     {
         $this->gamemaster->deleteMaster($_POST['id']);
 
-        header('Location: /index.php?page=gestionGamemasters&success=GameMasterSupprimer');    
+        header('Location: /index.php?page=gestionGamemaster&success=GameMasterSupprimer');    
     }
 
     public function assignationGamemaster()
