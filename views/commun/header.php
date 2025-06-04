@@ -57,7 +57,7 @@ session_start();
           <a class="nav-link <?php echo isset($_GET['page']) && $_GET['page'] === 'gestionReservations' ? 'active' : ''; ?>" href="index.php?page=gestionReservations"><i class="fas fa-calendar-check me-1"></i>Gestion des Réservations</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?php echo isset($_GET['page']) && $_GET['page'] === 'gestionGamemasters' ? 'active' : ''; ?>" href="index.php?page=gestionGamemasters"><i class="fas fa-user-tie me-1"></i>Gestion des GM</a>
+          <a class="nav-link <?php echo isset($_GET['page']) && $_GET['page'] === 'gestionGamemaster' ? 'active' : ''; ?>" href="index.php?page=gestionGamemaster"><i class="fas fa-user-tie me-1"></i>Gestion des GM</a>
         </li>
         <?php endif; ?>
         <?php if (isset($_SESSION['utilisateur']) && $_SESSION['utilisateur']['type_utilisateur'] == 2) : ?>

@@ -86,7 +86,7 @@ switch ($page) {
 		include('views/admin/gestionSalles.php');
 		break;
 
-	case 'gestionGamemasters':
+	case 'gestionGamemaster':
 		include('views/admin/gestionGamemaster.php');
 		break;
 
