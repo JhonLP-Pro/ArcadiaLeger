@@ -296,100 +296,112 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                                         <i class="fas fa-edit text-primary me-2"></i>Modifier une salle existante
                                     </h5>
                                 </div>
-                                <form method="post" action="/controllers/sallesController.php" enctype="multipart/form-data" class="row g-4">
+                                <form method="post" action="/controllers/SallesController.php" enctype="multipart/form-data">
                                     <input type="hidden" name="action" value="update">
-                                    <div class="col-12 mb-4">
-                                        <label for="salle_id" class="form-label fw-bold mb-2">
-                                            <i class="fas fa-door-closed text-primary me-2"></i>Sélectionner la salle à modifier
-                                        </label>
-                                        <select class="form-select form-select-lg bg-light border-0" id="salle_id" name="id" required>
-                                            <option value="">Sélectionner une salle</option>
-                                            <?php foreach ($allsalles as $salle): ?>
-                                                <option value="<?= $salle['id'] ?>"><?= htmlspecialchars($salle['nom']) ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="nom" class="form-label fw-bold mb-2">
-                                                <i class="fas fa-signature text-primary me-2"></i>Nom de la salle
+                                    <div class="row">
+                                        <div class="col-12 mb-4">
+                                            <label for="salle_id" class="form-label fw-bold mb-2">
+                                                <i class="fas fa-door-closed text-primary me-2"></i>Sélectionner la salle à modifier
                                             </label>
-                                            <input type="text" class="form-control form-control-lg bg-light border-0" 
-                                                   id="nom" name="nom" required placeholder="Ex: La Crypte Mystérieuse">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="description" class="form-label fw-bold mb-2">
-                                                <i class="fas fa-align-left text-primary me-2"></i>Description
-                                            </label>
-                                            <textarea class="form-control bg-light border-0" id="description" 
-                                                      name="description" rows="4" required 
-                                                      placeholder="Décrivez l'ambiance et l'histoire de la salle..."></textarea>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="image" class="form-label fw-bold mb-2">
-                                                <i class="fas fa-image text-primary me-2"></i>Image de la salle
-                                            </label>
-                                            <input type="file" class="form-control bg-light border-0" 
-                                                   id="image" name="image" accept="image/*">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="theme_edit" class="form-label fw-bold mb-2">
-                                                <i class="fas fa-theater-masks text-primary me-2"></i>Thème
-                                            </label>
-                                            <select class="form-select bg-light border-0" id="theme_edit" name="theme_id" required>
-                                                <option value="">Sélectionnez un thème</option>
-                                                <?php foreach ($allThemes as $theme): ?>
-                                                    <option value="<?= $theme['id'] ?>" <?= ($salle['theme_id'] == $theme['id']) ? 'selected' : '' ?>>
-                                                        <?= htmlspecialchars($theme['nom']) ?>
-                                                    </option>
+                                            <select class="form-select form-select-lg bg-light border-0" id="salle_id" name="id" required>
+                                                <option value="">Sélectionner une salle</option>
+                                                <?php foreach ($allsalles as $salle): ?>
+                                                    <option value="<?= $salle['id'] ?>"><?= htmlspecialchars($salle['nom']) ?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="duree" class="form-label fw-bold mb-2">
-                                                <i class="fas fa-clock text-primary me-2"></i>Durée de la partie
-                                            </label>
-                                            <div class="input-group">
-                                                <input type="number" class="form-control bg-light border-0" 
-                                                       id="duree" name="duree" required placeholder="60">
-                                                <span class="input-group-text bg-light border-0">minutes</span>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="nom" class="form-label fw-bold mb-2">
+                                                    <i class="fas fa-signature text-primary me-2"></i>Nom de la salle
+                                                </label>
+                                                <input type="text" class="form-control form-control-lg bg-light border-0" 
+                                                       id="nom" name="nom" required placeholder="Ex: La Crypte Mystérieuse">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="description" class="form-label fw-bold mb-2">
+                                                    <i class="fas fa-align-left text-primary me-2"></i>Description
+                                                </label>
+                                                <textarea class="form-control bg-light border-0" id="description" 
+                                                      name="description" rows="4" required 
+                                                      placeholder="Décrivez l'ambiance et l'histoire de la salle..."></textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="image" class="form-label fw-bold mb-2">
+                                                    <i class="fas fa-image text-primary me-2"></i>Image de la salle
+                                                </label>
+                                                <input type="file" class="form-control bg-light border-0" 
+                                                       id="image" name="image" accept="image/*">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="theme_edit" class="form-label fw-bold mb-2">
+                                                    <i class="fas fa-theater-masks text-primary me-2"></i>Thème
+                                                </label>
+                                                <select class="form-select bg-light border-0" id="theme_edit" name="theme_id" required>
+                                                    <option value="">Sélectionnez un thème</option>
+                                                    <?php foreach ($allThemes as $theme): ?>
+                                                        <option value="<?= $theme['id'] ?>">
+                                                            <?= htmlspecialchars($theme['nom']) ?>
+                                                        </option>
+                                                    <?php endforeach; ?>
+                                                </select>
                                             </div>
                                         </div>
-                                        <div class="mb-3">
-                                            <label class="form-label fw-bold mb-2">
-                                                <i class="fas fa-users text-primary me-2"></i>Capacité de la salle
-                                            </label>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="input-group">
-                                                        <span class="input-group-text bg-light border-0">Min</span>
-                                                        <input type="number" class="form-control bg-light border-0" 
-                                                               id="nb_joueurs_min" name="nb_joueurs_min" required placeholder="2">
-                                                    </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="duree" class="form-label fw-bold mb-2">
+                                                    <i class="fas fa-clock text-primary me-2"></i>Durée de la partie
+                                                </label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control bg-light border-0" 
+                                                           id="duree" name="duree" required placeholder="60">
+                                                    <span class="input-group-text bg-light border-0">minutes</span>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="input-group">
-                                                        <span class="input-group-text bg-light border-0">Max</span>
-                                                        <input type="number" class="form-control bg-light border-0" 
-                                                               id="nb_joueurs_max" name="nb_joueurs_max" required placeholder="6">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label fw-bold mb-2">
+                                                    <i class="fas fa-users text-primary me-2"></i>Capacité de la salle
+                                                </label>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="input-group">
+                                                            <span class="input-group-text bg-light border-0">Min</span>
+                                                            <input type="number" class="form-control bg-light border-0" 
+                                                                   id="nb_joueurs_min" name="nb_joueurs_min" required placeholder="2">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="input-group">
+                                                            <span class="input-group-text bg-light border-0">Max</span>
+                                                            <input type="number" class="form-control bg-light border-0" 
+                                                                   id="nb_joueurs_max" name="nb_joueurs_max" required placeholder="6">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="prix" class="form-label">Prix (€)</label>
-                                            <input type="number" class="form-control" id="prix" name="prix" required>
+                                            <div class="mb-3">
+                                                <label for="prix" class="form-label fw-bold mb-2">
+                                                    <i class="fas fa-euro-sign text-primary me-2"></i>Prix de la partie
+                                                </label>
+                                                <div class="input-group">
+                                                    <input type="number" class="form-control bg-light border-0" 
+                                                           id="prix" name="prix" required placeholder="120">
+                                                    <span class="input-group-text bg-light border-0">€</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                <div class="text-end mt-4">
-                                    <button type="submit" class="btn btn-primary btn-lg px-5">
-                                        <i class="fas fa-save me-2"></i>Enregistrer les modifications
-                                    </button>
-                                </div>
-                            </form>
+                                    <div class="row mt-4">
+                                        <div class="col-12 text-end">
+                                            <button type="submit" class="btn btn-primary btn-lg px-5">
+                                                <i class="fas fa-save me-2"></i>Enregistrer les modifications
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -606,6 +618,26 @@ document.addEventListener('DOMContentLoaded', function() {
         var select = document.getElementById('salle_id');
         if (select) {
             select.value = salleId;
+            
+            // Récupérer les données de la salle sélectionnée
+            <?php
+            echo "var salles = {";
+            foreach ($allsalles as $s) {
+                echo $s['id'] . ': {"nom": "' . addslashes($s['nom']) . '", "description": "' . addslashes($s['description']) . '", "duree": ' . $s['duree'] . ', "nb_joueurs_min": ' . $s['nb_joueurs_min'] . ', "nb_joueurs_max": ' . $s['nb_joueurs_max'] . ', "prix": ' . $s['prix'] . ', "theme_id": ' . $s['theme_id'] . '},'; 
+            }
+            echo "};";
+            ?>
+            
+            // Pré-remplir les champs du formulaire avec les données de la salle
+            if (salles[salleId]) {
+                document.getElementById('nom').value = salles[salleId].nom;
+                document.getElementById('description').value = salles[salleId].description;
+                document.getElementById('duree').value = salles[salleId].duree;
+                document.getElementById('nb_joueurs_min').value = salles[salleId].nb_joueurs_min;
+                document.getElementById('nb_joueurs_max').value = salles[salleId].nb_joueurs_max;
+                document.getElementById('prix').value = salles[salleId].prix;
+                document.getElementById('theme_edit').value = salles[salleId].theme_id;
+            }
         }
     }
 });
