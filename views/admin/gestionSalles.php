@@ -600,58 +600,23 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialisation des onglets Bootstrap
     var allTabs = [].slice.call(document.querySelectorAll('[data-bs-toggle="tab"]'));
     allTabs.forEach(function(tab) {
+        var tabTrigger = new bootstrap.Tab(tab);
+        
         tab.addEventListener('click', function(event) {
             event.preventDefault();
-            var target = document.querySelector(tab.getAttribute('data-bs-target'));
-            
-            // Masquer tous les onglets
-            document.querySelectorAll('.tab-pane').forEach(function(pane) {
-                pane.classList.remove('show', 'active');
-            });
-            
-            // Afficher l'onglet cible
-            if (target) {
-                target.classList.add('show', 'active');
-            }
-            
-            // Mettre à jour les classes des boutons d'onglet
-            document.querySelectorAll('[data-bs-toggle="tab"]').forEach(function(t) {
-                t.classList.remove('active');
-                t.setAttribute('aria-selected', 'false');
-            });
-            
-            tab.classList.add('active');
-            tab.setAttribute('aria-selected', 'true');
+            tabTrigger.show();
         });
     });
 
     // Fonction pour activer l'onglet de modification
     window.activateModifyTab = function(salleId) {
-        console.log("Activation de l'onglet de modification pour la salle ID: " + salleId);
+        // Trouver l'élément de l'onglet modification directement
+        var modifierTab = document.querySelector('#modifier-salle-tab');
         
-        // Trouver l'élément de l'onglet modification
-        var modifierTab = document.getElementById('modifier-salle-tab');
-        var modifierPane = document.getElementById('modifier-salle');
-        
-        if (modifierTab && modifierPane) {
-            // Masquer tous les onglets
-            document.querySelectorAll('.tab-pane').forEach(function(pane) {
-                pane.classList.remove('show', 'active');
-            });
-            
-            // Afficher l'onglet de modification
-            modifierPane.classList.add('show', 'active');
-            
-            // Mettre à jour les classes des boutons d'onglet
-            document.querySelectorAll('[data-bs-toggle="tab"]').forEach(function(t) {
-                t.classList.remove('active');
-                t.setAttribute('aria-selected', 'false');
-            });
-            
-            modifierTab.classList.add('active');
-            modifierTab.setAttribute('aria-selected', 'true');
-            
-            console.log("Onglet activé manuellement");
+        // Activer l'onglet manuellement en cliquant dessus
+        if (modifierTab) {
+            modifierTab.click();
+            console.log("Onglet cliqué");
             
             // Pré-remplir l'ID de la salle
             var select = document.getElementById('salle_id');
@@ -683,7 +648,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error("Élément select 'salle_id' non trouvé");
             }
         } else {
-            console.error("Éléments d'onglet 'modifier-salle-tab' ou 'modifier-salle' non trouvés");
+            console.error("Élément onglet 'modifier-salle-tab' non trouvé");
         }
     }
 });
