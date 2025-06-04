@@ -1,20 +1,6 @@
 <?php
-// Activer l'affichage des erreurs pour le débogage
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 require_once(__DIR__ . '/../config.php');
-
-// Vérifier si le fichier existe
-echo '<!-- Le fichier controllers/affichage/afficherReservation.php existe : ' . 
-    (file_exists(BASE_PATH . '/controllers/affichage/afficherReservation.php') ? 'Oui' : 'Non') . ' -->';
-
 require_once(BASE_PATH . '/controllers/affichage/afficherReservation.php');
-
-// Vérifier si la variable $sallereserver est définie
-echo '<!-- Variable $sallereserver : ' . 
-    (isset($sallereserver) ? 'Définie (' . (is_array($sallereserver) ? count($sallereserver) : 'non array') . ' éléments)' : 'Non définie') . ' -->';
 ?>
 
 <div class="container py-5">
