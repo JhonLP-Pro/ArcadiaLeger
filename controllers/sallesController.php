@@ -66,11 +66,11 @@ class sallesController
     public function create()
     {
         if(isset($_POST['image'])) {
-            $this->salles->ajouterSalle($_POST['nom'], $_POST['theme_id'], $_POST['description'], $_POST['histoire'], $_POST['duree'], $_POST['nb_joueurs_min'], $_POST['nb_joueurs_max'], $_POST['prix'], $_POST['image']);
+            $this->salles->ajouterSalle($_POST['nom'], $_POST['theme_id'], $_POST['description'], '', $_POST['duree'], $_POST['nb_joueurs_min'], $_POST['nb_joueurs_max'], $_POST['prix'], $_POST['image']);
 
             header('Location: /index.php?page=gestionSalles&success=salleAjouter');
         }else{
-            $this->salles->ajouterSalle($_POST['nom'], $_POST['theme_id'], $_POST['description'], $_POST['histoire'], $_POST['duree'], $_POST['nb_joueurs_min'], $_POST['nb_joueurs_max'], $_POST['prix'], '');
+            $this->salles->ajouterSalle($_POST['nom'], $_POST['theme_id'], $_POST['description'], '', $_POST['duree'], $_POST['nb_joueurs_min'], $_POST['nb_joueurs_max'], $_POST['prix'], '');
 
             header('Location: /index.php?page=gestionSalles&success=salleAjouter');
         }
