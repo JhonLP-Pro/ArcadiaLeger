@@ -102,11 +102,13 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                         <i class="fas fa-plus-circle me-2"></i>Ajouter une Salle
                     </button>
                 </li>
+                <!-- Onglet Modifier une salle temporairement désactivé
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="modifier-salle-tab" data-bs-toggle="tab" data-bs-target="#modifier-salle" type="button" role="tab" aria-controls="modifier-salle" aria-selected="false">
                         <i class="fas fa-edit me-2"></i>Modifier une Salle
                     </button>
                 </li>
+                -->
             </ul>
 
             <!-- Contenu des sous-onglets salles -->
@@ -287,7 +289,7 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                         </div>
                     </div>
 
-                    <!-- Modifier une salle -->
+                    <!-- Modifier une salle - temporairement désactivé
                     <div class="tab-pane fade" id="modifier-salle" role="tabpanel" aria-labelledby="modifier-salle-tab">
                         <div class="card border-0 shadow-sm">
                             <div class="card-body p-4">
@@ -404,6 +406,7 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                             </div>
                         </div>
                     </div>
+                    -->
                 </div>
             </div>
         </div>
