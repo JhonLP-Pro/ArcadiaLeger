@@ -109,3 +109,29 @@ if (!$salle || !$horaire) {
     </div>
 </div>
 
+<script>
+    // Fonction pour afficher/masquer les options d'hôtel
+    function toggleHotelOptions() {
+        const hotelOptions = document.getElementById('hotel_options');
+        const avecHotel = document.getElementById('avec_hotel');
+        
+        if (avecHotel.checked) {
+            hotelOptions.style.display = 'block';
+        } else {
+            hotelOptions.style.display = 'none';
+        }
+    }
+    
+    // Fonction pour mettre à jour le prix de l'hôtel et le total
+    function updatePrixHotel() {
+        const categorieSelect = document.getElementById('categorie_hotel');
+        const selectedOption = categorieSelect.options[categorieSelect.selectedIndex];
+        const prixHotel = selectedOption.getAttribute('data-prix');
+        const prixEscapeGame = <?= $salle['prix'] ?>;
+        
+        // Mettre à jour les champs
+        document.getElementById('prix_hotel').value = prixHotel;
+        document.getElementById('prix_hotel_affichage').textContent = prixHotel;
+        document.getElementById('prix_total_package').textContent = 'Prix total du package : ' + (parseInt(prixEscapeGame) + parseInt(prixHotel)) + '€';
+    }
+</script>
