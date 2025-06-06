@@ -85,26 +85,7 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                 </div>
             </div>
 
-            <!-- Système d'onglets -->
-            <ul class="nav nav-tabs mb-3" id="reservationTabs" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="escape-tab" data-bs-toggle="tab" data-bs-target="#escape-content" 
-                            type="button" role="tab" aria-controls="escape-content" aria-selected="true">
-                        <i class="fas fa-door-closed me-2"></i>Réservations Escape Game
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="hotel-tab" data-bs-toggle="tab" data-bs-target="#hotel-content" 
-                            type="button" role="tab" aria-controls="hotel-content" aria-selected="false">
-                        <i class="fas fa-bed me-2"></i>Réservations Hôtel
-                    </button>
-                </li>
-            </ul>
-            
-            <!-- Contenu des onglets -->
-            <div class="tab-content" id="reservationTabsContent">
-                <!-- Onglet Escape Game -->
-                <div class="tab-pane fade show active" id="escape-content" role="tabpanel" aria-labelledby="escape-tab">
+            <!-- Réservations Escape Game -->
                     <!-- Carte principale pour les réservations d'escape game -->
                     <div class="card border-0 shadow-sm" style="border-radius: 15px;">
                         <div class="card-header bg-white pt-4 pb-3 border-0">
@@ -215,9 +196,10 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                         </div>
                     <?php endif; ?>
                 </div>
-                
-                <!-- Onglet Hôtel -->
-                <div class="tab-pane fade" id="hotel-content" role="tabpanel" aria-labelledby="hotel-tab">
+            </div>
+            
+            <!-- Réservations Hôtel -->
+            <div class="mt-5">
                     <!-- Carte principale pour les réservations d'hôtel -->
                     <div class="card border-0 shadow-sm" style="border-radius: 15px;">
                         <div class="card-header bg-white pt-4 pb-3 border-0">
@@ -308,7 +290,6 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                             <?php endif; ?>
                         </div>
                     </div>
-                </div>
             </div>
         </div>
     </div>
