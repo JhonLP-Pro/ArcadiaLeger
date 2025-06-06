@@ -66,7 +66,7 @@ class reservationsController
             // Récupérer les données pour la réservation d'hôtel
             $date_escape = isset($_POST['date_escape']) ? $_POST['date_escape'] : date('Y-m-d', strtotime('+1 day')); // Date par défaut = lendemain
             $prix_hotel = isset($_POST['prix_hotel']) ? $_POST['prix_hotel'] : 80; // Prix par défaut
-            $nb_personnes = isset($_POST['nb_participants']) ? $_POST['nb_participants'] : 2; // Même nombre que pour l'escape game
+            $nb_personnes = isset($_POST['nb_personnes_hotel']) ? $_POST['nb_personnes_hotel'] : 1; // Utiliser le champ spécifique pour l'hôtel
             $categorie = isset($_POST['categorie_hotel']) ? $_POST['categorie_hotel'] : 'Standard'; // Catégorie par défaut
             
             // Créer la réservation d'hôtel associée

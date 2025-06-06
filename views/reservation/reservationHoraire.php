@@ -85,6 +85,14 @@ if (!$salle || !$horaire) {
                                         </select>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="nb_personnes_hotel" class="form-label">Nombre de personnes à l'hôtel</label>
+                                        <input type="number" class="form-control" id="nb_personnes_hotel" name="nb_personnes_hotel" 
+                                               min="1" max="4" value="1">
+                                        <div class="form-text">Maximum 4 personnes par chambre</div>
+                                    </div>
+                                </div>
                                 <input type="hidden" id="prix_hotel" name="prix_hotel" value="80">
                                 <div class="alert alert-info">
                                     <i class="fas fa-info-circle me-2"></i>
