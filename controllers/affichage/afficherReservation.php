@@ -42,6 +42,6 @@ $reservationsAssignees = $reservation->reservationbyGM($_SESSION['utilisateur'][
 $allreservationsHotel = $reservation->getAllReservationsHotel();
 
 // Récupération des réservations d'hôtel de l'utilisateur connecté
-$reservationsHotelUser = $reservation->getReservationsHotelByUser($_SESSION['utilisateur']['id']);
+$reservationsHotelUser = $reservation->getReservationsHotelByUtilisateur($_SESSION['utilisateur']['id']);
 
 ?>
