@@ -107,6 +107,102 @@ private $bdd;
         return $req->fetchAll();
     }   
 
+    // Méthodes pour les réservations d'hôtel
+    public function creerReservationHotel($utilisateur_id, $date, $prix, $nbpersonne, $categorie) {
+        $req = $this->bdd->prepare("INSERT INTO reservationHotel (utilisateur_id, date, prix, nbpersonne, categorie) 
+                                   VALUES (:utilisateur_id, :date, :prix, :nbpersonne, :categorie)");
+        
+        $req->bindParam(':utilisateur_id', $utilisateur_id);
+        $req->bindParam(':date', $date);
+        $req->bindParam(':prix', $prix);
+        $req->bindParam(':nbpersonne', $nbpersonne);
+        $req->bindParam(':categorie', $categorie);
+
+        if ($req->execute()) {
+            return $this->bdd->lastInsertId();
+        }
+        return false;
+    }
+    
+    /**
+     * Récupère toutes les réservations d'hôtel d'un utilisateur
+     * 
+     * @param int $utilisateur_id ID de l'utilisateur
+     * @return array Liste des réservations d'hôtel
+     */
+    public function getReservationsHotelByUtilisateur($utilisateur_id) {
+        $req = $this->bdd->prepare("SELECT rh.*, u.nom, u.prenom 
+                                    FROM reservationHotel rh 
+                                    JOIN utilisateurs u ON rh.utilisateur_id = u.id 
+                                    WHERE rh.utilisateur_id = ?
+                                    ORDER BY rh.date DESC");
+        $req->execute([$utilisateur_id]);
+        return $req->fetchAll();
+    }
+    
+    /**
+     * Récupère une réservation d'hôtel par son ID
+     * 
+     * @param int $reservation_id ID de la réservation
+     * @return array|bool Données de la réservation ou false si non trouvée
+     */
+    public function getReservationHotelById($reservation_id) {
+        $req = $this->bdd->prepare("SELECT rh.*, u.nom, u.prenom 
+                                    FROM reservationHotel rh 
+                                    JOIN utilisateurs u ON rh.utilisateur_id = u.id 
+                                    WHERE rh.id = ?");
+        $req->execute([$reservation_id]);
+        return $req->fetch();
+    }
+    
+    /**
+     * Récupère toutes les réservations d'hôtel
+     * 
+     * @return array Liste de toutes les réservations d'hôtel
+     */
+    public function getAllReservationsHotel() {
+        $req = $this->bdd->prepare("SELECT rh.*, u.nom, u.prenom 
+                                    FROM reservationHotel rh 
+                                    JOIN utilisateurs u ON rh.utilisateur_id = u.id 
+                                    ORDER BY rh.date DESC");
+        $req->execute();
+        return $req->fetchAll();
+    }
+    
+    /**
+     * Met à jour une réservation d'hôtel existante
+     * 
+     * @param int $reservation_id ID de la réservation
+     * @param string $date Nouvelle date
+     * @param int $prix Nouveau prix
+     * @param int $nbpersonne Nouveau nombre de personnes
+     * @param string $categorie Nouvelle catégorie
+     * @return bool Succès ou échec de la mise à jour
+     */
+    public function updateReservationHotel($reservation_id, $date, $prix, $nbpersonne, $categorie) {
+        $req = $this->bdd->prepare("UPDATE reservationHotel 
+                                   SET date = :date, prix = :prix, nbpersonne = :nbpersonne, categorie = :categorie 
+                                   WHERE id = :id");
+        
+        $req->bindParam(':date', $date);
+        $req->bindParam(':prix', $prix);
+        $req->bindParam(':nbpersonne', $nbpersonne);
+        $req->bindParam(':categorie', $categorie);
+        $req->bindParam(':id', $reservation_id);
+        
+        return $req->execute();
+    }
+    
+    /**
+     * Annule (supprime) une réservation d'hôtel
+     * 
+     * @param int $reservation_id ID de la réservation à annuler
+     * @return bool Succès ou échec de l'annulation
+     */
+    public function annulerReservationHotel($reservation_id) {
+        $req = $this->bdd->prepare("DELETE FROM reservationHotel WHERE id = ?");
+        return $req->execute([$reservation_id]);
+    }
 
 }
 
