@@ -85,45 +85,65 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                 </div>
             </div>
 
-            <!-- Carte principale -->
-            <div class="card border-0 shadow-sm" style="border-radius: 15px;">
-                <div class="card-header bg-white pt-4 pb-3 border-0">
-                    <div class="row align-items-center">
-                        <div class="col">
-                            <?php if (isset($_GET['success']) && $_GET['success'] == 'ReservationAnnuler'): ?>
-                                <div class="alert alert-success d-flex align-items-center mb-0" role="alert">
-                                    <i class="fas fa-check-circle me-2"></i>
-                                    <div>La réservation a été annulée avec succès.</div>
+            <!-- Système d'onglets -->
+            <ul class="nav nav-tabs mb-3" id="reservationTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="escape-tab" data-bs-toggle="tab" data-bs-target="#escape-content" 
+                            type="button" role="tab" aria-controls="escape-content" aria-selected="true">
+                        <i class="fas fa-door-closed me-2"></i>Réservations Escape Game
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="hotel-tab" data-bs-toggle="tab" data-bs-target="#hotel-content" 
+                            type="button" role="tab" aria-controls="hotel-content" aria-selected="false">
+                        <i class="fas fa-bed me-2"></i>Réservations Hôtel
+                    </button>
+                </li>
+            </ul>
+            
+            <!-- Contenu des onglets -->
+            <div class="tab-content" id="reservationTabsContent">
+                <!-- Onglet Escape Game -->
+                <div class="tab-pane fade show active" id="escape-content" role="tabpanel" aria-labelledby="escape-tab">
+                    <!-- Carte principale pour les réservations d'escape game -->
+                    <div class="card border-0 shadow-sm" style="border-radius: 15px;">
+                        <div class="card-header bg-white pt-4 pb-3 border-0">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <?php if (isset($_GET['success']) && $_GET['success'] == 'ReservationAnnuler'): ?>
+                                        <div class="alert alert-success d-flex align-items-center mb-0" role="alert">
+                                            <i class="fas fa-check-circle me-2"></i>
+                                            <div>La réservation a été annulée avec succès.</div>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
-                            <?php endif; ?>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="card-body p-4">
-                    <?php if (empty($allreservations)): ?>
-                        <div class="text-center py-5" style="background: rgba(0,0,0,0.03); border-radius: 10px;">
-                            <i class="fas fa-calendar-times fa-3x text-muted mb-3"></i>
-                            <h5 class="text-muted">Aucune réservation à venir</h5>
-                            <p class="text-muted mb-0">Les nouvelles réservations apparaîtront ici</p>
-                        </div>
-                    <?php else: ?>
-                        <div class="table-responsive">
-                            <table class="table table-hover align-middle">
-                                <thead>
-                                    <tr>
-                                        <th class="ps-4">Client</th>
-                                        <th>Salle</th>
-                                        <th>Date & Heure</th>
-                                        <th>Participants</th>
-                                        <th>Prix</th>
-                                        <th>Statut</th>
-                                        <th class="text-end pe-4">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach ($allreservations as $reservation): ?>
-                                        <tr>
+                        <div class="card-body p-4">
+                            <?php if (empty($allreservations)): ?>
+                                <div class="text-center py-5" style="background: rgba(0,0,0,0.03); border-radius: 10px;">
+                                    <i class="fas fa-calendar-times fa-3x text-muted mb-3"></i>
+                                    <h5 class="text-muted">Aucune réservation d'escape game à venir</h5>
+                                    <p class="text-muted mb-0">Les nouvelles réservations apparaîtront ici</p>
+                                </div>
+                            <?php else: ?>
+                                <div class="table-responsive">
+                                    <table class="table table-hover align-middle">
+                                        <thead>
+                                            <tr>
+                                                <th class="ps-4">Client</th>
+                                                <th>Salle</th>
+                                                <th>Date & Heure</th>
+                                                <th>Participants</th>
+                                                <th>Prix</th>
+                                                <th>Statut</th>
+                                                <th class="text-end pe-4">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($allreservations as $reservation): ?>
+                                                <tr>
                                             <td class="ps-4">
                                                 <div class="d-flex align-items-center">
                                                     <div class="bg-light rounded-circle p-2 me-3">
@@ -188,12 +208,108 @@ if (!isset($_SESSION['utilisateur']) || $_SESSION['utilisateur']['type_utilisate
                                                     </button>
                                                 </form>
                                             </td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            <?php endif; ?>
                         </div>
-                    <?php endif; ?>
+                    </div>
+                </div>
+                
+                <!-- Onglet Hôtel -->
+                <div class="tab-pane fade" id="hotel-content" role="tabpanel" aria-labelledby="hotel-tab">
+                    <!-- Carte principale pour les réservations d'hôtel -->
+                    <div class="card border-0 shadow-sm" style="border-radius: 15px;">
+                        <div class="card-header bg-white pt-4 pb-3 border-0">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <?php if (isset($_GET['success']) && $_GET['success'] == 'ReservationHotelAnnuler'): ?>
+                                        <div class="alert alert-success d-flex align-items-center mb-0" role="alert">
+                                            <i class="fas fa-check-circle me-2"></i>
+                                            <div>La réservation d'hôtel a été annulée avec succès.</div>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body p-4">
+                            <?php if (empty($allreservationsHotel)): ?>
+                                <div class="text-center py-5" style="background: rgba(0,0,0,0.03); border-radius: 10px;">
+                                    <i class="fas fa-bed fa-3x text-muted mb-3"></i>
+                                    <h5 class="text-muted">Aucune réservation d'hôtel à venir</h5>
+                                    <p class="text-muted mb-0">Les nouvelles réservations d'hôtel apparaîtront ici</p>
+                                </div>
+                            <?php else: ?>
+                                <div class="table-responsive">
+                                    <table class="table table-hover align-middle">
+                                        <thead>
+                                            <tr>
+                                                <th class="ps-4">Client</th>
+                                                <th>Date</th>
+                                                <th>Catégorie</th>
+                                                <th>Personnes</th>
+                                                <th>Prix</th>
+                                                <th class="text-end pe-4">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php foreach ($allreservationsHotel as $reservationHotel): ?>
+                                                <tr>
+                                                    <td class="ps-4">
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="bg-light rounded-circle p-2 me-3">
+                                                                <i class="fas fa-user text-primary"></i>
+                                                            </div>
+                                                            <div>
+                                                                <h6 class="mb-0"><?= htmlspecialchars($reservationHotel['prenom']) ?> <?= htmlspecialchars($reservationHotel['nom']) ?></h6>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <i class="fas fa-calendar-alt text-primary me-2"></i>
+                                                            <?= date('d/m/Y', strtotime($reservationHotel['date'])) ?>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <i class="fas fa-star text-primary me-2"></i>
+                                                            <?= htmlspecialchars($reservationHotel['categorie']) ?>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <i class="fas fa-users text-primary me-2"></i>
+                                                            <?= htmlspecialchars($reservationHotel['nbpersonne']) ?> personnes
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <i class="fas fa-euro-sign text-primary me-2"></i>
+                                                            <?= htmlspecialchars($reservationHotel['prix']) ?> €
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-end pe-4">
+                                                        <form action="controllers/reservationsController.php" method="post" class="d-inline">
+                                                            <input type="hidden" name="action" value="annulerHotel">
+                                                            <input type="hidden" name="id" value="<?= $reservationHotel['id'] ?>">
+                                                            <button type="submit" class="btn btn-outline-danger btn-sm px-3" 
+                                                                    onclick="return confirm('Êtes-vous sûr de vouloir annuler cette réservation d\'hôtel ?')">
+                                                                <i class="fas fa-times me-2"></i>Annuler
+                                                            </button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

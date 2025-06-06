@@ -38,8 +38,10 @@ if (isset($page) && $page === 'assignationGM') {
 
 $reservationsAssignees = $reservation->reservationbyGM($_SESSION['utilisateur']['id']);
 
+// Récupération de toutes les réservations d'hôtel
+$allreservationsHotel = $reservation->getAllReservationsHotel();
 
-
-
+// Récupération des réservations d'hôtel de l'utilisateur connecté
+$reservationsHotelUser = $reservation->getReservationsHotelByUser($_SESSION['utilisateur']['id']);
 
 ?>
