@@ -9,13 +9,12 @@ class EscapeGame {
     }
 
     // Méthodes pour les salles
-    public function ajouterSalle($nom, $theme_id, $description, $histoire, $duree, $nb_joueurs_min, $nb_joueurs_max, $prix, $image) {
-        $req = $this->bdd->prepare("INSERT INTO salles (nom, theme_id, description, histoire, duree, nb_joueurs_min, nb_joueurs_max, prix, image) 
-                                   VALUES (:nom, :theme_id, :description, :histoire, :duree, :nb_joueurs_min, :nb_joueurs_max, :prix, :image)");
+    public function ajouterSalle($nom, $theme_id, $description, $duree, $nb_joueurs_min, $nb_joueurs_max, $prix, $image) {
+        $req = $this->bdd->prepare("INSERT INTO salles (nom, theme_id, description, duree, nb_joueurs_min, nb_joueurs_max, prix, image) 
+                                   VALUES (:nom, :theme_id, :description, :duree, :nb_joueurs_min, :nb_joueurs_max, :prix, :image)");
         $req->bindParam(':nom', $nom);
         $req->bindParam(':theme_id', $theme_id);
         $req->bindParam(':description', $description);
-        $req->bindParam(':histoire', $histoire);
         $req->bindParam(':duree', $duree);
         $req->bindParam(':nb_joueurs_min', $nb_joueurs_min);
         $req->bindParam(':nb_joueurs_max', $nb_joueurs_max);

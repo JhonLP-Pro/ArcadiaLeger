@@ -115,9 +115,12 @@ INSERT INTO salles (nom, theme_id, description, duree, nb_joueurs_min, nb_joueur
 
 -- Insertion des horaires
 INSERT INTO horaires (salle_id, heure_debut, heure_fin) VALUES
-    (1, '2024-01-01 10:00:00', '2024-01-01 11:00:00'),
-    (2, '2024-01-01 10:00:00', '2024-01-01 11:00:00'),
-    (3, '2024-01-01 10:00:00', '2024-01-01 11:00:00');
+    (1, '2025-06-11 10:00:00', '2024-01-01 11:00:00'),
+    (1, '2025-06-11 11:00:00', '2024-01-01 12:00:00'),
+    (1, '2025-06-12 10:00:00', '2024-01-01 11:00:00'),
+    (1, '2025-06-12 11:00:00', '2024-01-01 12:00:00'),
+    (1, '2025-06-13 10:00:00', '2024-01-01 11:00:00'),
+    (1, '2025-06-13 11:00:00', '2024-01-01 12:00:00');
 
 -- Insertion des statuts de gamemaster
 INSERT INTO gamemaster_status (statut_desc) VALUES
